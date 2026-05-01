@@ -1,0 +1,18 @@
+{
+  "name": "anime-catalog",
+  "version": "1.0.0",
+  "description": "Catalogo de animes desenvolvido com HTML, CSS e JavaScript.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "anime",
+    "catalogo",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT"
+}
