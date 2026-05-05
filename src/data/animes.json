@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Naruto",
+    "genre": "Ação",
+    "image": "https://cdn.myanimelist.net/images/anime/13/17405.jpg",
+    "description": "Naruto Uzumaki sonha em se tornar Hokage enquanto aprende a controlar o poder que carrega dentro de si.",
+    "status": "Finalizado"
+  },
+  {
+    "name": "One Piece",
+    "genre": "Aventura",
+    "image": "https://cdn.myanimelist.net/images/anime/6/73245.jpg",
+    "description": "Monkey D. Luffy parte em uma jornada pelos mares para encontrar o lendário tesouro One Piece.",
+    "status": "Em exibição"
+  },
+  {
+    "name": "Bleach",
+    "genre": "Sobrenatural",
+    "image": "https://cdn.myanimelist.net/images/anime/3/40451.jpg",
+    "description": "Ichigo Kurosaki ganha poderes de ceifador de almas e passa a proteger humanos de espíritos perigosos.",
+    "status": "Finalizado"
+  },
+  {
+    "name": "Dragon Ball Z",
+    "genre": "Ação",
+    "image": "https://cdn.myanimelist.net/images/anime/1277/142022.jpg",
+    "description": "Goku e seus aliados enfrentam inimigos cada vez mais fortes para proteger a Terra.",
+    "status": "Finalizado"
+  },
+  {
+    "name": "Fullmetal Alchemist: Brotherhood",
+    "genre": "Fantasia",
+    "image": "https://cdn.myanimelist.net/images/anime/1208/94745.jpg",
+    "description": "Os irmãos Edward e Alphonse Elric procuram a Pedra Filosofal após uma tentativa de alquimia dar errado.",
+    "status": "Finalizado"
+  },
+  {
+    "name": "Attack on Titan",
+    "genre": "Drama",
+    "image": "https://cdn.myanimelist.net/images/anime/10/47347.jpg",
+    "description": "A humanidade luta pela sobrevivência contra titãs que ameaçam destruir suas muralhas.",
+    "status": "Finalizado"
+  }
+]

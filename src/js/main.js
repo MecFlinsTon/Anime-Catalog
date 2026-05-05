@@ -1,10 +1,19 @@
-const animes = [
-  { name: "Naruto" },
-  { name: "Dragon Ball" },
-  { name: "Bleach" },
-  { name: "One Piece" },
-  { name: "Fullmetal Alchemist" },
-];
+let animes = [];
+let favoritos = [];
+
+function carregarFavoritos() {
+  const favoritosSalvos = localStorage.getItem("Favoritos");
+
+  try {
+    favoritos = favoritosSalvos ? JSON.parse(favoritosSalvos) : [];
+  } catch (error) {
+    favoritos = [];
+  }
+}
+
+function salvarFavoritos() {
+  localStorage.setItem("Favoritos", JSON.stringify(favoritos));
+}
 
 function renderAnimes(animeList, list) {
   animeList.innerHTML = "";
@@ -15,9 +24,18 @@ function renderAnimes(animeList, list) {
   }
 
   list.forEach((anime) => {
+    const jaFavoritado = favoritos.includes(anime.name);
+
     animeList.innerHTML += `
       <article>
+        <img src="${anime.image}" alt="Capa do anime ${anime.name}">
         <h3>${anime.name}</h3>
+        <span>${anime.genre}</span>
+        <p>${anime.description}</p>
+        <strong>Status: ${anime.status}</strong>
+        <button type="button" onclick="toggleFavorito('${anime.name}')">
+          ${jaFavoritado ? "Remover favorito" : "Favoritar"}
+        </button>
       </article>
     `;
   });
@@ -33,6 +51,7 @@ function initCatalog() {
   }
 
   document.body.dataset.js = "loaded";
+  carregarFavoritos();
 
   function updateThemeButton() {
     if (!themeToggle) {
@@ -68,10 +87,33 @@ function initCatalog() {
     renderAnimes(animeList, filteredAnimes);
   }
 
+  async function loadAnimes() {
+    try {
+      const response = await fetch("./src/data/animes.json");
+      animes = await response.json();
+      renderAnimes(animeList, animes);
+    } catch (error) {
+      animeList.innerHTML = "<p>Não foi possível carregar os animes.</p>";
+    }
+  }
+
+  window.toggleFavorito = function toggleFavorito(nomeAnime) {
+    const jaFavoritado = favoritos.includes(nomeAnime);
+
+    if (jaFavoritado) {
+      favoritos = favoritos.filter((nome) => nome !== nomeAnime);
+    } else {
+      favoritos.push(nomeAnime);
+    }
+
+    salvarFavoritos();
+    filterAnimes();
+  };
+
   applySavedTheme();
   themeToggle?.addEventListener("click", toggleTheme);
   input.addEventListener("input", filterAnimes);
-  renderAnimes(animeList, animes);
+  loadAnimes();
 }
 
 document.addEventListener("DOMContentLoaded", initCatalog);
