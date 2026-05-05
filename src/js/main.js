@@ -3,21 +3,18 @@ const animes = [
   { name: "Dragon Ball" },
   { name: "Bleach" },
   { name: "One Piece" },
-  { name: "Full metal" },
+  { name: "Fullmetal Alchemist" },
 ];
 
-const input = document.getElementById("searchInput");
-const animeList = document.getElementById("animeList");
-
-function renderAnimes(lista) {
+function renderAnimes(animeList, list) {
   animeList.innerHTML = "";
 
-  if (lista.length === 0) {
+  if (list.length === 0) {
     animeList.innerHTML = "<p>Nenhum anime encontrado.</p>";
     return;
   }
 
-  lista.forEach(anime => {
+  list.forEach((anime) => {
     animeList.innerHTML += `
       <article>
         <h3>${anime.name}</h3>
@@ -26,16 +23,55 @@ function renderAnimes(lista) {
   });
 }
 
-function filterAnimes() {
-  const searchText = input.value.toLowerCase().trim();
+function initCatalog() {
+  const input = document.getElementById("searchInput");
+  const animeList = document.getElementById("animeList");
+  const themeToggle = document.getElementById("themeToggle");
 
-  const filteredAnimes = animes.filter(anime =>
-    anime.name.toLowerCase().includes(searchText)
-  );
+  if (!input || !animeList) {
+    return;
+  }
 
-  renderAnimes(filteredAnimes);
+  document.body.dataset.js = "loaded";
+
+  function updateThemeButton() {
+    if (!themeToggle) {
+      return;
+    }
+
+    const isDarkTheme = document.body.classList.contains("dark-theme");
+    themeToggle.textContent = isDarkTheme ? "Tema claro" : "Tema escuro";
+  }
+
+  function applySavedTheme() {
+    const savedTheme = localStorage.getItem("animeCatalogTheme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-theme");
+    }
+
+    updateThemeButton();
+  }
+
+  function toggleTheme() {
+    const isDarkTheme = document.body.classList.toggle("dark-theme");
+    localStorage.setItem("animeCatalogTheme", isDarkTheme ? "dark" : "light");
+    updateThemeButton();
+  }
+
+  function filterAnimes() {
+    const searchText = input.value.toLowerCase().trim();
+    const filteredAnimes = animes.filter((anime) =>
+      anime.name.toLowerCase().includes(searchText)
+    );
+
+    renderAnimes(animeList, filteredAnimes);
+  }
+
+  applySavedTheme();
+  themeToggle?.addEventListener("click", toggleTheme);
+  input.addEventListener("input", filterAnimes);
+  renderAnimes(animeList, animes);
 }
 
-input.addEventListener("input", filterAnimes);
-
-renderAnimes(animes);
+document.addEventListener("DOMContentLoaded", initCatalog);
