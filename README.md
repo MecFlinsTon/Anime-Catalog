@@ -1,24 +1,18 @@
 # 🎌 Anime Catalog
 
-Projeto de catálogo de animes desenvolvido para treinar HTML, CSS e JavaScript.
+Projeto de catálogo de animes desenvolvido para praticar HTML, CSS e JavaScript.
 
----
+## 🚀 Objetivo
 
-# 🚀 Objetivo
-
-Criar uma aplicação web onde o usuário pode:
+Criar uma aplicação web onde o usuário possa:
 
 - Listar animes
-- Buscar por nome
-- Filtrar por gênero
-- Ver detalhes
+- Buscar animes por nome
+- Filtrar animes por gênero
+- Ver detalhes de cada anime
 - Favoritar animes
 
----
-
-# 🧩 Funcionalidades
-
-## ✅ Funcionalidades atuais
+## 🧩 Funcionalidades
 
 - Exibição de cards de anime
 - Leitura de dados via JSON
@@ -26,9 +20,7 @@ Criar uma aplicação web onde o usuário pode:
 - Busca por nome
 - Filtro por categoria
 
----
-
-# 📁 Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```txt
 anime-catalog/
@@ -45,3 +37,4 @@ anime-catalog/
 ├── README.md
 └── package.json
 ```
+
